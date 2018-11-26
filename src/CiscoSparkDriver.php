@@ -157,8 +157,8 @@ class CiscoSparkDriver extends HttpDriver
         $response = $this->http->get(self::API_ENDPOINT.'people/'.$personId, [], $this->getHeaders());
         $userInfo = Collection::make(json_decode($response->getContent(), true));
 
-        return new User($userInfo->get('id'), $userInfo->get('firstName'), $userInfo->get('lastName'), $userInfo->get('nickName'));
-    }
+        return new User($userInfo->get('id'), $userInfo->get('firstName'), $userInfo->get('lastName'), $userInfo->get('nickName'), $userInfo->get('emails')[0]);
+   }
 
     /**
      * Low-level method to perform driver specific API requests.
